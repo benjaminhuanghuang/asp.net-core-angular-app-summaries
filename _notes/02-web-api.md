@@ -23,5 +23,14 @@ Controller/BooksController.cs
 ```
 https://localhost:7204/api/Books/GetBooks
 
-```
+
+https://localhost:7204/api/Books/SingleBook/1
+
+
+https://localhost:7204/api/Books/UpdateBook/1 
+    Header: Content-Type application/json
+    Body : {}
+
+https://localhost:7204/api/Books/DeleteBook/1
+ ```
 
