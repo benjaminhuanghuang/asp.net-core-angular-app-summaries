@@ -15,5 +15,13 @@ config services
 
 
 
-## Create API endpoint / controller
+## Create API endpoints / controller
 Controller/BooksController.cs
+
+
+## Test
+```
+https://localhost:7204/api/Books/GetBooks
+
+```
+
