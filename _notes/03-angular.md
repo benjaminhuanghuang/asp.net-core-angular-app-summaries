@@ -44,7 +44,7 @@ RouterModule.forRoot([
 
 
 
-## Books page
+## books page
 Create Book interface
 
 Load data
@@ -61,3 +61,5 @@ getAllBooks(){
     return this.http.get<Book[]>(this._baseURL+"/GetBooks");
   }
 ```
+
+## new-book page
