@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Book } from 'src/app/models/book.model';
 import { BookService } from 'src/app/services/book.service';
 
 @Component({
@@ -15,8 +16,8 @@ export class BooksComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.service.getAllBooks().subscribe(data => {
-    //   this.books = data;
-    // })
+    this.service.getAllBooks().subscribe(data => {
+      this.books = data;
+    })
   }
 }

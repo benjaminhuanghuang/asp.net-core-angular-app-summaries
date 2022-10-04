@@ -1,6 +1,6 @@
 
 
-Create project
+Create project ASP.NET Core with Angular
 ```
     dotnet new angular
 ```

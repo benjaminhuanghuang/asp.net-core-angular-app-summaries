@@ -13,8 +13,6 @@ config services
     builder.Services.AddTransient<IBookService, BookService>();
 ```
 
-
-
 ## Create API endpoints / controller
 Controller/BooksController.cs
 
@@ -34,3 +32,23 @@ https://localhost:7204/api/Books/UpdateBook/1
 https://localhost:7204/api/Books/DeleteBook/1
  ```
 
+## Enable CORS
+``` 
+app.UseCors(policy=>policy.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
+```
+
+## Modify proxy
+```
+const PROXY_CONFIG = [
+  {
+    context: [
+      "/api/**",
+   ],
+    target: target,
+    secure: false,
+    headers: {
+      Connection: 'Keep-Alive'
+    }
+  }
+]
+```

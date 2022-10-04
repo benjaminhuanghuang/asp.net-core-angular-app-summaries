@@ -1,8 +1,8 @@
 <h1>Book summaries</h1>
 
-<p *ngIf="!books"><b>Loading...</b></p>
+<p *ngIf="books.length===0"><b>Loading...</b></p>
 
-<table class="table table-striped" *ngIf="books">
+<table class="table table-striped" *ngIf="books.length>0">
 <thead>
     <tr>
         <th>Title</th>
