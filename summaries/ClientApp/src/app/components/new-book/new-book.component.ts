@@ -10,13 +10,10 @@ import { Router } from '@angular/router';
 })
 export class NewBookComponent implements OnInit {
 
-  addBookForm: FormGroup | undefined;
+  addBookForm: FormGroup;
   showError: boolean = false;
 
   constructor(private service: BookService, private fb: FormBuilder, private router: Router) {
-  }
-
-  ngOnInit() {
     this.addBookForm = this.fb.group({
       id:[Math.floor(Math.random()*1000)],
       title:[null, Validators.required],
@@ -28,8 +25,12 @@ export class NewBookComponent implements OnInit {
     })
   }
 
+  ngOnInit() {
+
+  }
+
   onSubmit(){
-    this.service.addBook(this.addBookForm.value).subscribe(data => {
+    this.service.addBook(this.addBookForm?.value).subscribe(data => {
       this.router.navigate(["/books"]);
     }, error => {
       this.showError = true;
