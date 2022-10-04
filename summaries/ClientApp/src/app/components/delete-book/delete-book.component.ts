@@ -21,7 +21,7 @@ export class DeleteBookComponent implements OnInit {
     })
   }
 
-  deleteBook(id: number){
+  deleteBook(id: number) {
     this.service.deleteBook(id).subscribe(data => {
       this.router.navigate(["/books"]);
     })

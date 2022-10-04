@@ -1,10 +1,11 @@
+using System;
 using Microsoft.AspNetCore.Mvc;
 using Summaries.Data;
 
 namespace Summaries.Controllers
 {
     [Route("api/[controller]")]
-    public class BooksController : Controller
+    public class BooksController:Controller
     {
         private IBookService _service;
         public BooksController(IBookService service)
@@ -14,10 +15,22 @@ namespace Summaries.Controllers
 
         //Create/Add a new book
         [HttpPost("AddBook")]
-        public IActionResult AddBook([FromBody] Book book)
+        public IActionResult AddBook([FromBody]Book book)
         {
-            _service.AddBook(book);
-            return Ok("Added");
+            try
+            {
+                if(book.Author != null && book.Title != null && book.Description != null)
+                {
+                    _service.AddBook(book);
+                    return Ok(book);
+                }
+                return BadRequest("Book was not added");
+            } 
+            catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            
         }
 
         //Read all books
