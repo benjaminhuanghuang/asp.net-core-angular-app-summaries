@@ -19,3 +19,14 @@
 Add service to providers array
 
 
+## Router
+```
+RouterModule.forRoot([
+    { path: '', component: HomeComponent, pathMatch: 'full' },
+    { path: 'books', component: BooksComponent},
+    { path: 'new-book', component: NewBookComponent},
+    { path: 'update-book/:id', component: UpdateBookComponent},
+    { path: 'delete-book/:id', component: DeleteBookComponent},
+    { path: 'show-book/:id', component: ShowBookComponent}
+])
+```
