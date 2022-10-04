@@ -6,24 +6,25 @@ import * as types from './action.types';
 import * as bookActions from './book.actions';
 
 import { Observable } from "rxjs";
+import { Book } from "../models/book.model";
 
-export class BookEffects 
+export class BookEffects
 {
     constructor(private service: BookService,
         private actions$: Actions){}
 
     @Effect() loadBooks$: Observable<Action> = this.actions$.pipe(
         ofType<bookActions.loadBooksAction>(types.LOAD_BOOKS),
-        mergeMap(() => 
-            this.service.getAllBooks().pipe(map(books => 
+        mergeMap(() =>
+            this.service.getAllBooks().pipe(map(books =>
                 new bookActions.loadBooksSuccessAction(books)))
         )
     )
 
     @Effect() deleteBook$: Observable<Action> = this.actions$.pipe(
         ofType<bookActions.deleteBookAction>(types.DELETE_BOOK),
-        mergeMap(action => 
-            this.service.deleteBook(action.payload).pipe(map((book:Book) => 
+        mergeMap(action =>
+            this.service.deleteBook(action.payload).pipe(map((book:Book|any) =>
                 new bookActions.deleteBookSuccessAction(book.id)))
         )
     )
