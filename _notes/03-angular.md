@@ -19,7 +19,7 @@
 Add service to providers array
 
 
-## Router
+## Router and nav
 ```
 RouterModule.forRoot([
     { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -29,4 +29,35 @@ RouterModule.forRoot([
     { path: 'delete-book/:id', component: DeleteBookComponent},
     { path: 'show-book/:id', component: ShowBookComponent}
 ])
+```
+
+```
+    <li class="nav-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }">
+        <a class="nav-link text-dark" [routerLink]="['/new-book']">Add</a>
+    </li>
+    <li class="nav-item" [routerLinkActive]="['link-active']">
+        <a class="nav-link text-dark" [routerLink]="['/books']">Books</a>
+    </li>
+```
+
+## Update home.component.html
+
+
+
+## Books page
+Create Book interface
+
+Load data
+- create method in Angular Service
+
+- Inject service in component
+```
+   constructor(private service: BookService) { }
+```
+
+- Call method from Angular service
+```
+getAllBooks(){
+    return this.http.get<Book[]>(this._baseURL+"/GetBooks");
+  }
 ```
